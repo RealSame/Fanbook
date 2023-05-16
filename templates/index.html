@@ -77,6 +77,11 @@
                 }
             })
         }
+        var sanitizeHTML = function (str) {
+            return str.replace(/[^\w. ]/gi, function (c) {
+                return '&#' + c.charCodeAt(0) + ';';
+            });
+        };
         function save_comment() {
             let name = $('#name').val();
             let comment = $('#comment').val();
@@ -88,7 +93,6 @@
                     comment_give: comment,
                 },
                 success: function (response) {
-                    alert(response['msg'])
                     window.location.reload()
                 }
             })
@@ -108,8 +112,8 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <blockquote class="blockquote mb-0">
-                                            <p>${comment}</p>
-                                            <footer class="blockquote-footer">${name}</footer>
+                                            <p>${sanitizeHTML(comment)}</p>
+                                            <footer class="blockquote-footer">${sanitizeHTML(name)}</footer>
                                         </blockquote>
                                     </div>
                                 </div>
