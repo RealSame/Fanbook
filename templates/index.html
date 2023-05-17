@@ -75,14 +75,10 @@
                 data: {},
                 success: function (response) {
                     $('#temp').text(response['temp'])
-                },
-                error: function(jqXHR, textStatus, error) {
-                    alert('Hubungi saya jika suhu tidak muncul')
-                    console.error(error)
                 }
             })
         }
-            
+
         var sanitizeHTML = function (str) {
             return str.replace(/[^\w. ]/gi, function (c) {
                 return '&#' + c.charCodeAt(0) + ';';
@@ -137,7 +133,7 @@
 <body>
     <div class="mypic">
         <h1> Apa yang kamu pikirkan tentangku? </h1>
-        <p>Current Temperature: <span id="temp"> <iframe src="http://spartacodingclub.shop/sparta_api/weather/seoul" frameborder="0"></iframe> </span>degrees</p>
+        <p>Current Temperature: <span id="temp"> </span>degrees</p>
     </div>
     <div class="mypost">
         <div class="form-floating mb-3">
