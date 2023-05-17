@@ -73,7 +73,9 @@
                 type: "GET",
                 url: "http://spartacodingclub.shop/sparta_api/weather/seoul",
                 data: {},
-                dataType: 'html',
+                success: function (response) {
+                    $('#temp').text(response['temp'])
+                }
             })
         }
         set_temp('http://spartacodingclub.shop/sparta_api/weather/seoul')
@@ -83,10 +85,7 @@
             .fail(function(jqXHR, textStatus, eror) {
                 console.error(error);
             })
-
-        // success: function (response) {
-        //             $('#temp').text(response['temp'])
-        //         }
+            
         var sanitizeHTML = function (str) {
             return str.replace(/[^\w. ]/gi, function (c) {
                 return '&#' + c.charCodeAt(0) + ';';
@@ -141,7 +140,7 @@
 <body>
     <div class="mypic">
         <h1> Apa yang kamu pikirkan tentangku? </h1>
-        <p>Current Temperature: <span id="temp()"> </span>degrees</p>
+        <p>Current Temperature: <span id="temp"> </span>degrees</p>
     </div>
     <div class="mypost">
         <div class="form-floating mb-3">
