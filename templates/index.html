@@ -75,16 +75,13 @@
                 data: {},
                 success: function (response) {
                     $('#temp').text(response['temp'])
+                },
+                error: function(jqXHR, textStatus, error) {
+                    alert('Hubungi saya jika suhu tidak muncul')
+                    console.error(error)
                 }
             })
         }
-        set_temp('https://spartacodingclub.shop/sparta_api/weather/seoul')
-            .done(function(response) {
-                console.log(response);
-            })
-            .fail(function(jqXHR, textStatus, eror) {
-                console.error(error);
-            })
             
         var sanitizeHTML = function (str) {
             return str.replace(/[^\w. ]/gi, function (c) {
